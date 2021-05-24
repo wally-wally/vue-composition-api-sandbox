@@ -1,20 +1,29 @@
 <template>
-  <div>
+  <section>
     <h2>Before</h2>
-    <h3>Todos</h3>
-    <ul>
-      <li v-for="todo in todos" :key="`todo-${todo.id}`">{{ todo.title }}</li>
-    </ul>
+    <article>
+      <h3>
+        Todos <span v-if="!!todoCount">({{ todoCount }}개)</span>
+      </h3>
+      <ul class="todo-list">
+        <li v-for="todo in todos" :key="`todo-${todo.id}`">{{ todo.title }}</li>
+      </ul>
+    </article>
 
-    <br />
-
-    <h3>Comments</h3>
-    <ul>
-      <li v-for="comment in comments" :key="`comment-${comment.id}`">
-        {{ comment.body }}
-      </li>
-    </ul>
-  </div>
+    <article>
+      <h3>Comments</h3>
+      <ul class="comment-list">
+        <li
+          v-for="comment in comments"
+          :key="`comment-${comment.id}`"
+          class="comment-list-item"
+          @click="showComment(comment)"
+        >
+          {{ comment.name }}
+        </li>
+      </ul>
+    </article>
+  </section>
 </template>
 
 <script lang="ts">
@@ -29,6 +38,12 @@ export default Vue.extend({
       todos: [] as Todo[],
       comments: [] as Comment[],
     };
+  },
+
+  computed: {
+    todoCount(): number {
+      return this.todos.length;
+    },
   },
 
   created() {
@@ -58,6 +73,31 @@ export default Vue.extend({
         console.warn(error);
       }
     },
+
+    showComment(comment: Comment) {
+      alert(`email: ${comment.email}\n\nbody: ${comment.body}`);
+    },
   },
 });
 </script>
+
+<style lang="scss" scoped>
+article {
+  & + & {
+    margin-top: 40px;
+  }
+}
+
+.todo-list,
+.comment-list {
+  display: inline-block;
+  margin: 0;
+}
+
+.comment-list-item {
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+</style>
