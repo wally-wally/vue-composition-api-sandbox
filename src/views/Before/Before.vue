@@ -26,6 +26,24 @@
         </li>
       </ul>
     </article>
+
+    <article>
+      <h3>Album</h3>
+      <ul class="album-list">
+        <li v-for="album in albums" :key="`album-${album.id}`">
+          {{ album.title }}
+        </li>
+      </ul>
+    </article>
+
+    <article>
+      <h3>Photo</h3>
+      <ul class="photo-list">
+        <li v-for="photo in photos" :key="`photo-${photo.id}`">
+          {{ photo.title }}
+        </li>
+      </ul>
+    </article>
   </section>
 </template>
 
@@ -33,6 +51,7 @@
 import Vue from "vue";
 import axios from "axios";
 import { Todo, Comment } from "./types";
+import { Album, Photo } from "../After/types";
 
 export default Vue.extend({
   name: "Before",
@@ -40,6 +59,8 @@ export default Vue.extend({
     return {
       todos: [] as Todo[],
       comments: [] as Comment[],
+      albums: [] as Album[],
+      photos: [] as Photo[],
     };
   },
 
@@ -51,6 +72,8 @@ export default Vue.extend({
 
   created() {
     this.fetchTodos();
+    this.fetchAlbums();
+    this.fetchPhotos();
   },
 
   mounted() {
@@ -77,6 +100,30 @@ export default Vue.extend({
         this.comments = data;
       } catch (error) {
         console.warn(error);
+      }
+    },
+
+    async fetchAlbums() {
+      try {
+        const { data }: { data: Album[] } = await axios.get(
+          "https://jsonplaceholder.typicode.com/albums"
+        );
+        this.albums = data.slice(0, 20);
+      } catch (error) {
+        console.warn(error);
+        this.albums = [];
+      }
+    },
+
+    async fetchPhotos() {
+      try {
+        const { data }: { data: Photo[] } = await axios.get(
+          "https://jsonplaceholder.typicode.com/photos"
+        );
+        this.photos = data.slice(0, 20);
+      } catch (error) {
+        console.warn(error);
+        this.photos = [];
       }
     },
 
