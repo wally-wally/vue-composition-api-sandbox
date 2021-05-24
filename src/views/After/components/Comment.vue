@@ -6,7 +6,7 @@
         v-for="comment in comments"
         :key="`comment-${comment.id}`"
         class="comment-list-item"
-        @click="showComment(comment)"
+        @click="clickComment(comment)"
       >
         {{ comment.name }}
       </li>
@@ -15,29 +15,27 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import useComment from "../composables/Comment";
+import Vue, { PropType } from "vue";
+import { Comment } from "../types";
 
 export default Vue.extend({
   name: "Comment",
+  props: {
+    comments: {
+      type: Array as PropType<Comment[]>,
+      default: () => [],
+    },
+  },
 
-  setup() {
-    const { comments, showComment } = useComment();
-
-    return {
-      comments,
-      showComment,
-    };
+  methods: {
+    clickComment(comment: Comment) {
+      this.$emit("click-comment", comment);
+    },
   },
 });
 </script>
 
 <style lang="scss" scoped>
-.comment-list {
-  display: inline-block;
-  margin: 0;
-}
-
 .comment-list-item {
   &:hover {
     cursor: pointer;

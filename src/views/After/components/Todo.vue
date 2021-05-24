@@ -10,28 +10,21 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import useTodo from "../composables/Todo";
+import Vue, { PropType } from "vue";
+import { Todo } from "../types";
 
 export default Vue.extend({
   name: "Todo",
+  props: {
+    todos: {
+      type: Array as PropType<Todo[]>,
+      default: () => [],
+    },
 
-  setup() {
-    const { todos, todoCount, fetchTodos } = useTodo();
-
-    fetchTodos();
-
-    return {
-      todos,
-      todoCount,
-    };
+    todoCount: {
+      type: Number,
+      default: 0,
+    },
   },
 });
 </script>
-
-<style lang="scss" scoped>
-.todo-list {
-  display: inline-block;
-  margin: 0;
-}
-</style>

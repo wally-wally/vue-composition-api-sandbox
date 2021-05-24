@@ -2,26 +2,72 @@
   <section>
     <h2>After</h2>
 
-    <Todo />
+    <Todo :todos="todos" :todoCount="todoCount" />
 
-    <Comment />
+    <Comment :comments="comments" @click-comment="showComment" />
 
-    <PhotoAlbum />
+    <Album :albums="albums" />
+
+    <Photo :photos="photos" />
   </section>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
+
 import Todo from "./components/Todo.vue";
 import Comment from "./components/Comment.vue";
-import PhotoAlbum from "./components/PhotoAlbum.vue";
+import Album from "./components/Album.vue";
+import Photo from "./components/Photo.vue";
+
+import useTodo from "./composables/Todo";
+import useComment from "./composables/Comment";
+import useAlbum from "./composables/Album";
+import usePhoto from "./composables/Photo";
 
 export default Vue.extend({
   name: "After",
   components: {
     Todo,
     Comment,
-    PhotoAlbum,
+    Album,
+    Photo,
+  },
+
+  setup() {
+    const { todos, todoCount, fetchTodos } = useTodo();
+    fetchTodos();
+
+    const { comments, showComment } = useComment();
+
+    const { albums, fetchAlbums } = useAlbum();
+    fetchAlbums();
+
+    const { photos, fetchPhotos } = usePhoto();
+    fetchPhotos();
+
+    return {
+      todos,
+      todoCount,
+      comments,
+      showComment,
+      albums,
+      photos,
+    };
   },
 });
 </script>
+
+<style lang="scss" scoped>
+ul {
+  display: inline-block;
+  margin: 0;
+}
+
+.comment-list-item {
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+</style>

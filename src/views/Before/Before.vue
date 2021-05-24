@@ -88,12 +88,6 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-.todo-list,
-.comment-list {
-  display: inline-block;
-  margin: 0;
-}
-
 .comment-list-item {
   &:hover {
     cursor: pointer;
