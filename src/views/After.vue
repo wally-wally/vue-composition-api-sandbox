@@ -32,7 +32,7 @@ import axios from "axios";
 import { Todo, Comment } from "./types";
 
 export default Vue.extend({
-  name: "Before",
+  name: "After",
   data() {
     return {
       todos: [] as Todo[],
