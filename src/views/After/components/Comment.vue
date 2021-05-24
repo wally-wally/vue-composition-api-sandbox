@@ -14,22 +14,6 @@
   </article>
 </template>
 
-<script lang="ts">
-import Vue from "vue";
-import useComment from "./composables/Comment";
-
-export default Vue.extend({
-  setup() {
-    const { comments, showComment } = useComment();
-
-    return {
-      comments,
-      showComment,
-    };
-  },
-});
-</script>
-
 <style lang="scss" scoped>
 .comment-list {
   display: inline-block;

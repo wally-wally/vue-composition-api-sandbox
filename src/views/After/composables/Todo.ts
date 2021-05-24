@@ -1,7 +1,6 @@
 import axios from "axios";
-import { Todo } from "../types";
 import { ref, computed } from "@vue/composition-api";
-import { UseTodo } from "./types";
+import { UseTodo, Todo } from "./types";
 
 const useTodo = (): UseTodo => {
   const todos = ref([] as Todo[]);

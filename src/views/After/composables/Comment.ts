@@ -1,7 +1,6 @@
 import axios from "axios";
-import { Comment } from "../types";
 import { ref, onMounted } from "@vue/composition-api";
-import { UseComment } from "./types";
+import { UseComment, Comment } from "./types";
 
 const useComment = (): UseComment => {
   const comments = ref([] as Comment[]);

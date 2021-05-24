@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
-import Before from "@/views/Before.vue";
-import After from "@/views/After.vue";
+import Before from "@/views/Before/Before.vue";
+import After from "@/views/After/After.vue";
 
 Vue.use(VueRouter);
 
