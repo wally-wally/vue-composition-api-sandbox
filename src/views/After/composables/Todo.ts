@@ -1,8 +1,9 @@
 import axios from "axios";
 import { ref, computed } from "@vue/composition-api";
 import { UseTodo, Todo } from "./types";
+import { ReturnNoParamsFunction } from "@/types";
 
-const useTodo = (): UseTodo => {
+const useTodo: ReturnNoParamsFunction<UseTodo> = () => {
   const todos = ref([] as Todo[]);
   const todoCount = computed(() => todos.value.length);
 

@@ -1,3 +1,4 @@
+import { ReturnNoParamsFunction, ReturnFunction } from "@/types";
 import { ComputedRef, Ref } from "@vue/composition-api";
 
 export interface Todo {
@@ -18,11 +19,11 @@ export interface Comment {
 export interface UseTodo {
   todos: Ref<Todo[]>;
   todoCount: ComputedRef<number>;
-  fetchTodos: () => Promise<void>;
+  fetchTodos: ReturnNoParamsFunction<Promise<void>>;
 }
 
 export interface UseComment {
   comments: Ref<Comment[]>;
-  fetchComments: () => Promise<void>;
-  showComment: (comment: Comment) => void;
+  fetchComments: ReturnNoParamsFunction<Promise<void>>;
+  showComment: ReturnFunction<Comment, void>;
 }
