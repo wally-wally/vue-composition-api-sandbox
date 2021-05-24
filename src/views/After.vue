@@ -1,82 +1,23 @@
 <template>
   <section>
-    <h2>Before</h2>
-    <article>
-      <h3>
-        Todos <span v-if="!!todoCount">({{ todoCount }}개)</span>
-      </h3>
-      <ul class="todo-list">
-        <li v-for="todo in todos" :key="`todo-${todo.id}`">{{ todo.title }}</li>
-      </ul>
-    </article>
+    <h2>After</h2>
 
-    <article>
-      <h3>Comments</h3>
-      <ul class="comment-list">
-        <li
-          v-for="comment in comments"
-          :key="`comment-${comment.id}`"
-          class="comment-list-item"
-          @click="showComment(comment)"
-        >
-          {{ comment.name }}
-        </li>
-      </ul>
-    </article>
+    <Todo />
+
+    <Comment />
   </section>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import axios from "axios";
-import { Todo, Comment } from "./types";
+import Todo from "@/components/Todo.vue";
+import Comment from "@/components/Comment.vue";
 
 export default Vue.extend({
   name: "After",
-  data() {
-    return {
-      todos: [] as Todo[],
-      comments: [] as Comment[],
-    };
-  },
-
-  computed: {
-    todoCount(): number {
-      return this.todos.length;
-    },
-  },
-
-  created() {
-    this.fetchTodos();
-    this.fetchComments();
-  },
-
-  methods: {
-    async fetchTodos() {
-      try {
-        const { data }: { data: Todo[] } = await axios.get(
-          "https://jsonplaceholder.typicode.com/todos"
-        );
-        this.todos = data.slice(0, 20);
-      } catch (error) {
-        console.warn(error);
-      }
-    },
-
-    async fetchComments() {
-      try {
-        const { data }: { data: Comment[] } = await axios.get(
-          "https://jsonplaceholder.typicode.com/posts/1/comments"
-        );
-        this.comments = data;
-      } catch (error) {
-        console.warn(error);
-      }
-    },
-
-    showComment(comment: Comment) {
-      alert(`email: ${comment.email}\n\nbody: ${comment.body}`);
-    },
+  components: {
+    Todo,
+    Comment,
   },
 });
 </script>
@@ -85,19 +26,6 @@ export default Vue.extend({
 article {
   & + & {
     margin-top: 40px;
-  }
-}
-
-.todo-list,
-.comment-list {
-  display: inline-block;
-  margin: 0;
-}
-
-.comment-list-item {
-  &:hover {
-    cursor: pointer;
-    text-decoration: underline;
   }
 }
 </style>
