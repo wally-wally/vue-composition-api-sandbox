@@ -1,6 +1,6 @@
 import axios from "axios";
 import { ref, onMounted } from "@vue/composition-api";
-import { UseComment, Comment } from "./types";
+import { UseComment, Comment } from "../types";
 import { ReturnNoParamsFunction } from "@/types";
 
 const useComment: ReturnNoParamsFunction<UseComment> = () => {

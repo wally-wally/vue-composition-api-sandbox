@@ -5,6 +5,8 @@
     <Todo />
 
     <Comment />
+
+    <PhotoAlbum />
   </section>
 </template>
 
@@ -12,20 +14,14 @@
 import Vue from "vue";
 import Todo from "./components/Todo.vue";
 import Comment from "./components/Comment.vue";
+import PhotoAlbum from "./components/PhotoAlbum.vue";
 
 export default Vue.extend({
   name: "After",
   components: {
     Todo,
     Comment,
+    PhotoAlbum,
   },
 });
 </script>
-
-<style lang="scss" scoped>
-article {
-  & + & {
-    margin-top: 40px;
-  }
-}
-</style>

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { ref, computed } from "@vue/composition-api";
-import { UseTodo, Todo } from "./types";
+import { UseTodo, Todo } from "../types";
 import { ReturnNoParamsFunction } from "@/types";
 
 const useTodo: ReturnNoParamsFunction<UseTodo> = () => {

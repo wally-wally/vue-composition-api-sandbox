@@ -16,6 +16,20 @@ export interface Comment {
   body: string;
 }
 
+export interface Album {
+  userId: number;
+  id: number;
+  title: string;
+}
+
+export interface Photo {
+  albumId: number;
+  id: number;
+  title: string;
+  url: string;
+  thumbnailUrl: string;
+}
+
 export interface UseTodo {
   todos: Ref<Todo[]>;
   todoCount: ComputedRef<number>;
@@ -26,4 +40,14 @@ export interface UseComment {
   comments: Ref<Comment[]>;
   fetchComments: ReturnNoParamsFunction<Promise<void>>;
   showComment: ReturnFunction<Comment, void>;
+}
+
+export interface UseAlbum {
+  albums: Ref<Album[]>;
+  fetchAlbums: ReturnNoParamsFunction<Promise<void>>;
+}
+
+export interface UsePhoto {
+  photos: Ref<Photo[]>;
+  fetchPhotos: ReturnNoParamsFunction<Promise<void>>;
 }

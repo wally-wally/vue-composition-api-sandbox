@@ -88,12 +88,6 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-article {
-  & + & {
-    margin-top: 40px;
-  }
-}
-
 .todo-list,
 .comment-list {
   display: inline-block;
