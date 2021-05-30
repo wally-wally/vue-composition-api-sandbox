@@ -1,7 +1,7 @@
 import { Ref } from "@vue/composition-api";
 
-export type BaseFunction<P, T> = (param: P) => T;
-export type NoParamsFunction<T> = () => T;
+export type BaseFunction<P, T = void> = (param: P) => T;
+export type NoParamsFunction<T = void> = () => T;
 
 export type CustomVueRef<T> = Ref<T>;
 

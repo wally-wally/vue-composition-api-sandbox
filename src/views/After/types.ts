@@ -69,7 +69,7 @@ export interface UseTodo {
 export interface UseComment {
   comments: Ref<Comment[]>;
   fetchComments: NoParamsFunction<Promise<void>>;
-  showComment: BaseFunction<Comment, void>;
+  showComment: BaseFunction<Comment>;
 }
 
 export interface UseAlbum {
@@ -84,8 +84,8 @@ export interface UsePhoto {
 
 export interface UseClick {
   value: Ref<number>;
-  addValue: NoParamsFunction<void>;
-  subtractValue: NoParamsFunction<void>;
+  addValue: NoParamsFunction;
+  subtractValue: NoParamsFunction;
 }
 
 export type PickedUserInfo = Pick<UserInfo, "name" | "email" | "phone">;

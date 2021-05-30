@@ -11,6 +11,6 @@ type HTMLInputEvent = VueEvent.Input<HTMLInputElement>;
 export interface UseTemplateRef {
   keyword: Ref<string>;
   inputRef: CustomVueRef<HTMLInputElement>;
-  handleInput: BaseFunction<HTMLInputEvent, void>;
-  alertKeyword: NoParamsFunction<void>;
+  handleInput: BaseFunction<HTMLInputEvent>;
+  alertKeyword: NoParamsFunction;
 }
