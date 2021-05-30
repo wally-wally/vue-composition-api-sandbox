@@ -15,6 +15,8 @@
     <Album :albums="albums" />
 
     <Photo :photos="photos" />
+
+    <UserInfo :userInfo="userInfo" />
   </section>
 </template>
 
@@ -26,12 +28,14 @@ import Todo from "./components/Todo.vue";
 import Comment from "./components/Comment.vue";
 import Album from "./components/Album.vue";
 import Photo from "./components/Photo.vue";
+import UserInfo from "./components/UserInfo.vue";
 
 import useTodo from "./composables/Todo";
 import useComment from "./composables/Comment";
 import useAlbum from "./composables/Album";
 import usePhoto from "./composables/Photo";
 import useClick from "./composables/Click";
+import useUserInfo from "./composables/UserInfo";
 
 export default defineComponent({
   name: "After",
@@ -41,6 +45,7 @@ export default defineComponent({
     Album,
     Photo,
     Click,
+    UserInfo,
   },
 
   setup() {
@@ -57,6 +62,9 @@ export default defineComponent({
     const { photos, fetchPhotos } = usePhoto();
     fetchPhotos();
 
+    const { userInfo, fetchUserInfo } = useUserInfo();
+    fetchUserInfo();
+
     return {
       value,
       addValue,
@@ -67,6 +75,7 @@ export default defineComponent({
       showComment,
       albums,
       photos,
+      userInfo,
     };
   },
 });

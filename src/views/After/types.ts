@@ -30,6 +30,36 @@ export interface Photo {
   thumbnailUrl: string;
 }
 
+interface UserCompany {
+  name: string;
+  catchPhrase: string;
+  bs: string;
+}
+
+interface UserAddressGeo {
+  lat: string;
+  lng: string;
+}
+
+interface UserAddress {
+  street: string;
+  suite: string;
+  city: string;
+  zipcode: string;
+  geo: UserAddressGeo;
+}
+
+export interface UserInfo {
+  id: number;
+  name: string;
+  username: string;
+  email: string;
+  address: UserAddress;
+  phone: string;
+  website: string;
+  company: UserCompany;
+}
+
 export interface UseTodo {
   todos: Ref<Todo[]>;
   todoCount: ComputedRef<number>;
@@ -56,4 +86,11 @@ export interface UseClick {
   value: Ref<number>;
   addValue: NoParamsFunction<void>;
   subtractValue: NoParamsFunction<void>;
+}
+
+export type PickedUserInfo = Pick<UserInfo, "name" | "email" | "phone">;
+
+export interface UseUserInfo {
+  userInfo: PickedUserInfo;
+  fetchUserInfo: NoParamsFunction<Promise<void>>;
 }
