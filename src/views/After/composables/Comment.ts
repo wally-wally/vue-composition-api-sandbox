@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { ref, onMounted } from "@vue/composition-api";
 import { UseComment, Comment } from "../types";
 import { NoParamsFunction } from "@/types";
@@ -8,7 +8,7 @@ const useComment: NoParamsFunction<UseComment> = () => {
 
   const fetchComments = async () => {
     try {
-      const { data }: { data: Comment[] } = await axios.get(
+      const { data }: AxiosResponse<Comment[]> = await axios.get(
         "https://jsonplaceholder.typicode.com/posts/1/comments"
       );
       comments.value = data;

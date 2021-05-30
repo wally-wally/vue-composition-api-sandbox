@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { ref, computed } from "@vue/composition-api";
 import { UseTodo, Todo } from "../types";
 import { NoParamsFunction } from "@/types";
@@ -9,7 +9,7 @@ const useTodo: NoParamsFunction<UseTodo> = () => {
 
   const fetchTodos = async () => {
     try {
-      const { data }: { data: Todo[] } = await axios.get(
+      const { data }: AxiosResponse<Todo[]> = await axios.get(
         "https://jsonplaceholder.typicode.com/todos"
       );
       todos.value = data.slice(0, 20);

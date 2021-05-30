@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { ref } from "@vue/composition-api";
 import { Photo, UsePhoto } from "../types";
 import { NoParamsFunction } from "@/types";
@@ -8,7 +8,7 @@ const usePhoto: NoParamsFunction<UsePhoto> = () => {
 
   const fetchPhotos = async () => {
     try {
-      const { data }: { data: Photo[] } = await axios.get(
+      const { data }: AxiosResponse<Photo[]> = await axios.get(
         "https://jsonplaceholder.typicode.com/photos"
       );
       photos.value = data.slice(0, 20);
