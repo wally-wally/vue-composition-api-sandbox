@@ -6,7 +6,7 @@
       <input
         type="text"
         ref="inputRef"
-        placeholder="Please Typing"
+        placeholder="Please Type Keyword"
         :value="keyword"
         @input="handleInput"
       />
