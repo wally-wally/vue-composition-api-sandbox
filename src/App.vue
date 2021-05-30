@@ -1,10 +1,6 @@
 <template>
   <div>
-    <header>
-      <router-link to="/before">Before</router-link>
-      |
-      <router-link to="/after">After</router-link>
-    </header>
+    <Header />
     <main>
       <router-view />
     </main>
@@ -13,24 +9,15 @@
 
 <script lang="ts">
 import Vue from "vue";
+import Header from "./components/Header.vue";
 
 export default Vue.extend({
   name: "App",
+  components: { Header },
 });
 </script>
 
 <style lang="scss" scoped>
-header {
-  position: fixed;
-  width: 100%;
-  height: 40px;
-  line-height: 40px;
-  font-size: 20px;
-  text-align: center;
-  background-color: #fff;
-  border-bottom: 1px solid #ccc;
-}
-
 main {
   padding-top: 30px;
   width: 90%;
