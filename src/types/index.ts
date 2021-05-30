@@ -1,2 +1,2 @@
-export type ReturnNoParamsFunction<T> = () => T;
-export type ReturnFunction<P, T> = (param: P) => T;
+export type BaseFunction<P, T> = (param: P) => T;
+export type NoParamsFunction<T> = () => T;

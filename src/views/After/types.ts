@@ -1,4 +1,4 @@
-import { ReturnNoParamsFunction, ReturnFunction } from "@/types";
+import { NoParamsFunction, BaseFunction } from "@/types";
 import { ComputedRef, Ref } from "@vue/composition-api";
 
 export interface Todo {
@@ -33,21 +33,21 @@ export interface Photo {
 export interface UseTodo {
   todos: Ref<Todo[]>;
   todoCount: ComputedRef<number>;
-  fetchTodos: ReturnNoParamsFunction<Promise<void>>;
+  fetchTodos: NoParamsFunction<Promise<void>>;
 }
 
 export interface UseComment {
   comments: Ref<Comment[]>;
-  fetchComments: ReturnNoParamsFunction<Promise<void>>;
-  showComment: ReturnFunction<Comment, void>;
+  fetchComments: NoParamsFunction<Promise<void>>;
+  showComment: BaseFunction<Comment, void>;
 }
 
 export interface UseAlbum {
   albums: Ref<Album[]>;
-  fetchAlbums: ReturnNoParamsFunction<Promise<void>>;
+  fetchAlbums: NoParamsFunction<Promise<void>>;
 }
 
 export interface UsePhoto {
   photos: Ref<Photo[]>;
-  fetchPhotos: ReturnNoParamsFunction<Promise<void>>;
+  fetchPhotos: NoParamsFunction<Promise<void>>;
 }

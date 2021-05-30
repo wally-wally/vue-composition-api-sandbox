@@ -1,9 +1,9 @@
 import axios from "axios";
 import { ref } from "@vue/composition-api";
 import { Album, UseAlbum } from "../types";
-import { ReturnNoParamsFunction } from "@/types";
+import { NoParamsFunction } from "@/types";
 
-const useAlbum: ReturnNoParamsFunction<UseAlbum> = () => {
+const useAlbum: NoParamsFunction<UseAlbum> = () => {
   const albums = ref([] as Album[]);
 
   const fetchAlbums = async () => {

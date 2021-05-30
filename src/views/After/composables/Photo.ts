@@ -1,9 +1,9 @@
 import axios from "axios";
 import { ref } from "@vue/composition-api";
 import { Photo, UsePhoto } from "../types";
-import { ReturnNoParamsFunction } from "@/types";
+import { NoParamsFunction } from "@/types";
 
-const usePhoto: ReturnNoParamsFunction<UsePhoto> = () => {
+const usePhoto: NoParamsFunction<UsePhoto> = () => {
   const photos = ref([] as Photo[]);
 
   const fetchPhotos = async () => {

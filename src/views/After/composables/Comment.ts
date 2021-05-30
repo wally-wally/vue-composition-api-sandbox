@@ -1,9 +1,9 @@
 import axios from "axios";
 import { ref, onMounted } from "@vue/composition-api";
 import { UseComment, Comment } from "../types";
-import { ReturnNoParamsFunction } from "@/types";
+import { NoParamsFunction } from "@/types";
 
-const useComment: ReturnNoParamsFunction<UseComment> = () => {
+const useComment: NoParamsFunction<UseComment> = () => {
   const comments = ref([] as Comment[]);
 
   const fetchComments = async () => {
