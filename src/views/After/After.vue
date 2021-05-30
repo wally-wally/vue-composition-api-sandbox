@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import { defineComponent } from "@vue/composition-api";
 
 import Todo from "./components/Todo.vue";
 import Comment from "./components/Comment.vue";
@@ -25,7 +25,7 @@ import useComment from "./composables/Comment";
 import useAlbum from "./composables/Album";
 import usePhoto from "./composables/Photo";
 
-export default Vue.extend({
+export default defineComponent({
   name: "After",
   components: {
     Todo,
