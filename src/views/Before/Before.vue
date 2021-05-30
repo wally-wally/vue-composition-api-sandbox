@@ -2,6 +2,12 @@
   <section>
     <h2>Before</h2>
 
+    <article class="click-count-wrapper">
+      <button @click="addValue">Add!</button>
+      <button class="ml-10" @click="subtractValue">Minus!</button>
+      <span class="pl-10">value : {{ value }}</span>
+    </article>
+
     <article>
       <h3>
         Todos <span v-if="!!todoCount">({{ todoCount }}개)</span>
@@ -57,6 +63,7 @@ export default Vue.extend({
   name: "Before",
   data() {
     return {
+      value: 0,
       todos: [] as Todo[],
       comments: [] as Comment[],
       albums: [] as Album[],
@@ -67,6 +74,14 @@ export default Vue.extend({
   computed: {
     todoCount(): number {
       return this.todos.length;
+    },
+  },
+
+  watch: {
+    // Vue.extend 방식 에서는 watch의 인자의 타입이 any로 잡힌다.
+    // 그래서 명시적으로 직접 타입을 선언해줘야 한다.
+    value(val) {
+      console.log(`value : ${val}`);
     },
   },
 
@@ -81,6 +96,14 @@ export default Vue.extend({
   },
 
   methods: {
+    addValue() {
+      this.value += 1;
+    },
+
+    subtractValue() {
+      this.value -= 1;
+    },
+
     async fetchTodos() {
       try {
         const { data }: { data: Todo[] } = await axios.get(
@@ -135,6 +158,20 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
+.click-count-wrapper {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+
+  .ml-10 {
+    margin-left: 10px;
+  }
+
+  .pl-10 {
+    padding-left: 10px;
+  }
+}
+
 .comment-list-item {
   &:hover {
     cursor: pointer;
