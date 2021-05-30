@@ -51,3 +51,9 @@ export interface UsePhoto {
   photos: Ref<Photo[]>;
   fetchPhotos: NoParamsFunction<Promise<void>>;
 }
+
+export interface UseClick {
+  value: Ref<number>;
+  addValue: NoParamsFunction<void>;
+  subtractValue: NoParamsFunction<void>;
+}

@@ -2,6 +2,12 @@
   <section>
     <h2>After</h2>
 
+    <Click
+      :value="value"
+      @add-value="addValue"
+      @subtract-value="subtractValue"
+    />
+
     <Todo :todos="todos" :todoCount="todoCount" />
 
     <Comment :comments="comments" @click-comment="showComment" />
@@ -15,6 +21,7 @@
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api";
 
+import Click from "./components/Click.vue";
 import Todo from "./components/Todo.vue";
 import Comment from "./components/Comment.vue";
 import Album from "./components/Album.vue";
@@ -24,6 +31,7 @@ import useTodo from "./composables/Todo";
 import useComment from "./composables/Comment";
 import useAlbum from "./composables/Album";
 import usePhoto from "./composables/Photo";
+import useClick from "./composables/Click";
 
 export default defineComponent({
   name: "After",
@@ -32,9 +40,12 @@ export default defineComponent({
     Comment,
     Album,
     Photo,
+    Click,
   },
 
   setup() {
+    const { value, addValue, subtractValue } = useClick();
+
     const { todos, todoCount, fetchTodos } = useTodo();
     fetchTodos();
 
@@ -47,6 +58,9 @@ export default defineComponent({
     fetchPhotos();
 
     return {
+      value,
+      addValue,
+      subtractValue,
       todos,
       todoCount,
       comments,
